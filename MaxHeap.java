@@ -156,5 +156,17 @@ public class MaxHeap {
 
 // MaxHeapOp
 class MaxHeapOp extends MaxHeap {
+    public MaxHeapOp (Integer[] heap, int cap, int n) {
+        super(heap, cap, n)
+    }
+
+    public MaxHeap (int cap) {
+        super(new Integer[cap], cap, 0)
+    }
+
+
+    // FIXME need to override removemax
+
+    // FIXME need to implement a new siftdown to be used for removals
 
 }

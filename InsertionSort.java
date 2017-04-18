@@ -4,30 +4,75 @@ import java.util.*;
 public class InsertionSort extends Sort {
 
 
-    public InsertionSort(Integer [] a) {
-	this.data = a;
-    }                
+	public InsertionSort(Integer [] a) {
+		this.data = a;
+	}                
 
-    // sort the array
-    public void sort() {
-         // insert i'th record
-         for (int i=1; i<data.length; i++) { 
-             // insert position i
-	     Integer temp = data[i];
-	     int pos = i;
-	     while (pos > 0 && data[pos-1] > temp) {
-		 data[pos] = data[pos-1];
-		 pos--;
-	     }
-	     data[pos] = temp;
-	 }
-     }
+	// sort the array
+	public void sort() {
+		// insert i'th record
+		for (int i=1; i<data.length; i++) { 
+		// insert position i
+			Integer temp = data[i];
+			int pos = i;
+		while (pos > 0 && data[pos-1] > temp) {
+			data[pos] = data[pos-1];
+			pos--;
+		}
+			data[pos] = temp;
+		}
+	}
 }
 
 
 
 // DoubleInsertionSort Class here
 class DoubleInsertionSort extends InsertionSort {
+
+	public DoubleInsertionSort(Integer [] a) {
+		super(a);
+	}
+
+
+	public void sort() {
+        // FIXME only works for odd
+        int smaller, larger;
+        int toMove, middle = this.data.length/2;
+
+        for (int edge = 0; edge < this.data.length/2; edge++) {
+
+            // Get the pair
+            if (this.data[middle - edge - 1] > this.data[middle + edge + 1]) {
+                smaller = this.data[middle + edge + 1];
+                larger = this.data[middle - edge - 1];
+            } else {
+                larger = this.data[middle + edge + 1];
+                smaller = this.data[middle - edge - 1];
+            }
+
+            // Insert the larger
+            for (toMove = middle+edge; this.data[toMove] > larger; toMove--) {
+                this.data[toMove + 1] = this.data[toMove];
+            }
+            this.data[toMove + 1] = larger;
+
+
+            // Insert the smaller
+            for (toMove = middle-edge; this.data[toMove] < smaller; toMove++) {
+                this.data[toMove - 1] = this.data[toMove];
+            }
+            this.data[toMove - 1] = smaller;
+
+
+
+
+        }
+
+
+    }
+
+
+
 
 }
 

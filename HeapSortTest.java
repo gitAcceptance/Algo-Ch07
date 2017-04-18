@@ -5,51 +5,44 @@ public class HeapSortTest {
 
 
     public static void main (String [] args) {
-
-	Integer [] a;
-	Integer[] copyA;
+        Integer [] a;
+        Integer[] copyA;
         int n;
 
         // get large data set size
-	n = Integer.parseInt(args[0]);
+        n = Integer.parseInt(args[0]);
 
         // heap sort a random array of size n
-        System.out.println("HeapSort large random array size " +
-                            n + " ...");
+        System.out.println("HeapSort large random array size " + n + " ...");
         a = ArrayBuilder.getRandom(n);
-	copyA = Arrays.copyOf(a, n);
-	testWith(a, "heap");
+        copyA = Arrays.copyOf(a, n);
+        testWith(a, "heap");
 
         // heap sort an inorder array of size n
-        System.out.println("HeapSort large in order array size " +
-                            n + " ...");
+        System.out.println("HeapSort large in order array size " + n + " ...");
         a = ArrayBuilder.getInorder(n);
-	testWith(a, "heap");
+        testWith(a, "heap");
 
         // heap sort a reverse order array of size n
-        System.out.println("HeapSort large reverse order array size " +
-                            n + " ...");
+        System.out.println("HeapSort large reverse order array size " + n + " ...");
         a = ArrayBuilder.getReverseOrder(n);
-	testWith(a, "heap");
+        testWith(a, "heap");
 
-	
+
         // optimized heap sort a random array of size n
-        System.out.println("Optimized HeapSort large random array size " +
-                            n + " ...");
+        System.out.println("Optimized HeapSort large random array size " + n + " ...");
         a = Arrays.copyOf(copyA, n);
-	testWith(a, "opt");
+        testWith(a, "opt");
 
         // optimized heap sort an inorder array of size n
-        System.out.println("Optimized HeapSort large in order array size " +
-                            n + " ...");
+        System.out.println("Optimized HeapSort large in order array size " + n + " ...");
         a = ArrayBuilder.getInorder(n);
-	testWith(a, "opt");
+        testWith(a, "opt");
 
         // optimized heap sort a reverse order array of size n
-        System.out.println("Optimized HeapSort large reverse order array size " +
-                            n + " ...");
+        System.out.println("Optimized HeapSort large reverse order array size " + n + " ...");
         a = ArrayBuilder.getReverseOrder(n);
-	testWith(a, "opt");
+        testWith(a, "opt");
 
     }
     // Parameters: a - integer array
@@ -60,7 +53,7 @@ public class HeapSortTest {
     //        sorted o/w
     public static void testWith (Integer [] a, String type) {
 	if (a.length < 21)
-            System.out.println(Arrays.toString(a));  
+        System.out.println(Arrays.toString(a));  
        	HeapSort sort;
 
         if (type.equals("heap"))
@@ -71,12 +64,13 @@ public class HeapSortTest {
 	long start = System.currentTimeMillis();
 	sort.sort();
 	long stop = System.currentTimeMillis();
-	if (sort.isSorted())
+
+	if (sort.isSorted()) {
 	    System.out.println("Time: " + (stop-start));
-	else {
+    } else {
 	    System.out.println("NOT sorted...");
 	    if (a.length < 21)
-               System.out.println(Arrays.toString(a));  
-	}
+            System.out.println(Arrays.toString(a));  
+        }
     }
 }
