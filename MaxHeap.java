@@ -81,14 +81,14 @@ public class MaxHeap {
 
     // returns string representation of the heap
     public String toString () {
-	return Arrays.toString(this.heap);
+       return Arrays.toString(this.heap);
     }
 
     // heapify contents of the array
     protected void buildHeap() {
-	for (int i = n/2-1; i>=0; i--) {
-	    siftdown(i);
-	}
+        for (int i = n/2-1; i>=0; i--) {
+            siftdown(i);
+        }
     }
 
     // put element i of the array in its correct place
@@ -169,9 +169,6 @@ class MaxHeapOp extends MaxHeap {
     }
 
 
-    // FIXME need to override removemax
-
-    // FIXME need to implement a new siftdown to be used for removals
     protected void siftDownRemove(int pos) {
         if (pos < 0 || pos >= this.n)
             throw new IllegalArgumentException(" pos = " + pos);

@@ -3,7 +3,6 @@ import java.util.*;
 
 public class InsertionSort extends Sort {
 
-
 	public InsertionSort(Integer [] a) {
 		this.data = a;
 	}                
@@ -15,10 +14,10 @@ public class InsertionSort extends Sort {
 		// insert position i
 			Integer temp = data[i];
 			int pos = i;
-		while (pos > 0 && data[pos-1] > temp) {
-			data[pos] = data[pos-1];
-			pos--;
-		}
+    		while (pos > 0 && data[pos-1] > temp) {
+    			data[pos] = data[pos-1];
+    			pos--;
+    		}
 			data[pos] = temp;
 		}
 	}
@@ -35,7 +34,6 @@ class DoubleInsertionSort extends InsertionSort {
 
 
     public void sort() {
-        // FIXME only works for odd
         int smaller, larger;
         int toMove, middle;
 
@@ -95,11 +93,9 @@ class DoubleInsertionSort extends InsertionSort {
 
             }
 
-
         }
 
 
-        
     }
 
 }
