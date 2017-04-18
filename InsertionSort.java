@@ -34,45 +34,73 @@ class DoubleInsertionSort extends InsertionSort {
 	}
 
 
-	public void sort() {
+    public void sort() {
         // FIXME only works for odd
         int smaller, larger;
-        int toMove, middle = this.data.length/2;
+        int toMove, middle;
 
-        for (int edge = 0; edge < this.data.length/2; edge++) {
+        if (this.data.length % 2 == 0) { // if it's even do this
+            middle = this.data.length/2 - 1;
+            for (int edge = 0; edge < this.data.length/2 ; edge++) {
 
-            // Get the pair
-            if (this.data[middle - edge - 1] > this.data[middle + edge + 1]) {
-                smaller = this.data[middle + edge + 1];
-                larger = this.data[middle - edge - 1];
-            } else {
-                larger = this.data[middle + edge + 1];
-                smaller = this.data[middle - edge - 1];
+                // Get the pair
+                if (this.data[middle - edge ] > this.data[middle + edge + 1]) {
+                    smaller = this.data[middle + edge + 1];
+                    larger = this.data[middle - edge ];
+                } else {
+                    larger = this.data[middle + edge + 1];
+                    smaller = this.data[middle - edge ];
+                }
+
+                // Insert the larger
+                for (toMove = middle+edge; this.data[toMove] > larger; toMove--) {
+                    this.data[toMove + 1] = this.data[toMove];
+                }
+                this.data[toMove + 1] = larger;
+
+
+                // Insert the smaller
+                for (toMove = middle-edge+1; this.data[toMove] < smaller; toMove++) {
+                    this.data[toMove - 1] = this.data[toMove];
+                }
+                this.data[toMove - 1] = smaller;
+
             }
 
-            // Insert the larger
-            for (toMove = middle+edge; this.data[toMove] > larger; toMove--) {
-                this.data[toMove + 1] = this.data[toMove];
+        } else { // else it's odd
+            middle = this.data.length/2;
+            for (int edge = 0; edge < this.data.length/2; edge++) {
+
+                // Get the pair
+                if (this.data[middle - edge - 1] > this.data[middle + edge + 1]) {
+                    smaller = this.data[middle + edge + 1];
+                    larger = this.data[middle - edge - 1];
+                } else {
+                    larger = this.data[middle + edge + 1];
+                    smaller = this.data[middle - edge - 1];
+                }
+
+                // Insert the larger
+                for (toMove = middle+edge; this.data[toMove] > larger; toMove--) {
+                    this.data[toMove + 1] = this.data[toMove];
+                }
+                this.data[toMove + 1] = larger;
+
+
+                // Insert the smaller
+                for (toMove = middle-edge; this.data[toMove] < smaller; toMove++) {
+                    this.data[toMove - 1] = this.data[toMove];
+                }
+                this.data[toMove - 1] = smaller;
+
             }
-            this.data[toMove + 1] = larger;
-
-
-            // Insert the smaller
-            for (toMove = middle-edge; this.data[toMove] < smaller; toMove++) {
-                this.data[toMove - 1] = this.data[toMove];
-            }
-            this.data[toMove - 1] = smaller;
-
-
 
 
         }
 
 
+        
     }
-
-
-
 
 }
 

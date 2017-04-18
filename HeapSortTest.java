@@ -52,25 +52,29 @@ public class HeapSortTest {
     //        reports time taken for the sort if it is sorted, reports not
     //        sorted o/w
     public static void testWith (Integer [] a, String type) {
-	if (a.length < 21)
-        System.out.println(Arrays.toString(a));  
-       	HeapSort sort;
-
-        if (type.equals("heap"))
-           sort = new HeapSort(a);
-	else
-	    sort = new HeapSortOp(a);
-
-	long start = System.currentTimeMillis();
-	sort.sort();
-	long stop = System.currentTimeMillis();
-
-	if (sort.isSorted()) {
-	    System.out.println("Time: " + (stop-start));
-    } else {
-	    System.out.println("NOT sorted...");
-	    if (a.length < 21)
-            System.out.println(Arrays.toString(a));  
+        if (a.length < 21) {
+            System.out.println(Arrays.toString(a));    	
         }
+        
+        HeapSort sort;
+
+        if (type.equals("heap")) {
+            sort = new HeapSort(a);
+        } else {
+            sort = new HeapSortOp(a);
+        }
+
+        long start = System.currentTimeMillis();
+        sort.sort();
+        long stop = System.currentTimeMillis();
+
+        if (sort.isSorted()) {
+            System.out.println("Time: " + (stop-start));
+        } else {
+            System.out.println("NOT sorted...");
+            if (a.length < 21)
+                System.out.println(Arrays.toString(a));  
+        }
+
     }
 }
